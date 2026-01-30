@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoang Duc Tai | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* CSS RESET & GENERAL */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #2d3436;
+            scroll-behavior: smooth;
+            background-color: #ffffff;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        /* NAVIGATION */
+        header {
+            background: #fff;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1000px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #0984e3;
+            text-transform: uppercase;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #636e72;
+            margin-left: 25px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #0984e3;
+        }
+
+        /* HERO SECTION */
+        #hero {
+            padding-top: 150px;
+            padding-bottom: 80px;
+            text-align: center;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: #2d3436;
+        }
+
+        .hero-content h1 span {
+            color: #0984e3;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #636e72;
+            margin-bottom: 30px;
+        }
+
+        /* SECTION TITLES */
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            border-left: 5px solid #0984e3;
+            padding-left: 15px;
+        }
+
+        /* INFO GRID */
+        .grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .grid { grid-template-columns: 1fr; }
+            #hero h1 { font-size: 2.2rem; }
+        }
+
+        /* CARDS */
+        .card {
+            background: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border: 1px solid #eee;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            background: #e1f5fe;
+            color: #0288d1;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin: 5px;
+            font-weight: 600;
+        }
+
+        /* PROJECT STYLES */
+        .project-meta {
+            color: #b2bec3;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        /* FOOTER & CONTACT */
+        footer {
+            background: #2d3436;
+            color: #dfe6e9;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .contact-info a {
+            color: #00cec9;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        .btn-cv {
+            background: #0984e3;
+            color: white;
+            padding: 10px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">Tai Hoang</div>
+            <ul>
+                <li><a href="#about">Học vấn</a></li>
+                <li><a href="#skills">Kỹ năng</a></li>
+                <li><a href="#projects">Dự án</a></li>
+                <li><a href="#contact">Liên hệ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <div class="hero-content">
+            <h1>Tôi là <span>Hoàng Đức Tài</span></h1>
+            <p>Sinh viên CNTT năm 3 | Machine Learning Enthusiast</p>
+            <div class="contact-quick">
+                <i class="fas fa-map-marker-alt"></i> Hà Nội [cite: 6]
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="grid">
+            <main>
+                <section id="about">
+                    <h2 class="section-title">Mục tiêu nghề nghiệp</h2>
+                    <p>Tôi là sinh viên năm thứ ba chuyên ngành Công nghệ thông tin [cite: 13] với niềm đam mê mãnh liệt đối với Học máy (Machine Learning)[cite: 9]. Tôi đang tìm kiếm cơ hội tham gia các nhóm nghiên cứu để tích lũy kinh nghiệm thực tế và đóng góp vào các dự án học thuật[cite: 10].</p>
+                </section>
+
+                <section id="projects" style="margin-top: 40px;">
+                    <h2 class="section-title">Dự án nổi bật</h2>
+                    <div class="card">
+                        <h3>Predict Student Graduation Outcome</h3>
+                        <p class="project-meta">Thời gian: 10/2025 – 11/2025 [cite: 27]</p>
+                        <p>Xây dựng hệ thống phân loại nhị phân dự đoán khả năng tốt nghiệp đúng hạn dựa trên các yếu tố học tập và xã hội[cite: 29].</p>
+                        <ul style="margin: 15px 0 15px 20px;">
+                            <li>Sử dụng Linear Regression để xử lý dữ liệu GPA thiếu[cite: 31].</li>
+                            <li>Huấn luyện mô hình Random Forest để đảm bảo độ chính xác[cite: 32].</li>
+                            <li>Công nghệ: Python, Pandas, Scikit-learn, Flask, Streamlit[cite: 33].</li>
+                        </ul>
+                    </div>
+                </section>
+            </main>
+
+            <aside>
+                <h2 class="section-title">Học vấn</h2>
+                <div class="card">
+                    <p><strong>PTIT</strong> [cite: 13]</p>
+                    <p>GPA: 3.42 / 4.0 [cite: 14]</p>
+                    <p>Chứng chỉ: Aptis B1 [cite: 36]</p>
+                </div>
+
+                <h2 class="section-title">Kỹ năng</h2>
+                <div class="card">
+                    <p><strong>Ngôn ngữ:</strong></p>
+                    <span class="skill-tag">Python</span> <span class="skill-tag">C/C++</span> <span class="skill-tag">Java</span> [cite: 17]
+                    
+                    <p style="margin-top:15px;"><strong>Thư viện & Công cụ:</strong></p>
+                    <span class="skill-tag">Numpy</span> <span class="skill-tag">Pandas</span> <span class="skill-tag">Scikit-learn</span> <span class="skill-tag">Git</span> [cite: 18]
+                    
+                    <p style="margin-top:15px;"><strong>Thuật toán:</strong></p>
+                    <p style="font-size: 0.9rem;">Trees, Graphs, Queues, Stacks [cite: 23]</p>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <footer id="contact">
+        <div class="container">
+            <h2>Hãy kết nối với tôi</h2>
+            <p style="margin-bottom: 20px;">Luôn sẵn sàng cho các dự án và cơ hội nghiên cứu mới.</p>
+            <div class="contact-info">
+                <a href="mailto:taih02551@gmail.com"><i class="fas fa-envelope"></i> taih02551@gmail.com</a> [cite: 5]
+                <a href="tel:0899619237"><i class="fas fa-phone"></i> 0899619237</a> [cite: 4]
+                <a href="https://github.com/masterdev195" target="_blank"><i class="fab fa-github"></i> GitHub</a> [cite: 7]
+            </div>
+            <p style="margin-top: 30px; opacity: 0.5; font-size: 0.8rem;">© 2026 Hoang Duc Tai. Designed for Portfolio.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
