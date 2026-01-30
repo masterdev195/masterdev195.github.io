@@ -3,256 +3,317 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hoang Duc Tai | Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
+    <title>Hoàng Đức Tài | Professional Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* CSS RESET & GENERAL */
+        :root {
+            --primary-color: #00d2ff;
+            --bg-dark: #0f172a;
+            --card-bg: #1e293b;
+            --text-light: #f8fafc;
+            --text-gray: #94a3b8;
+            --transition: all 0.3s ease;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Inter', -apple-system, sans-serif;
         }
 
         body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            line-height: 1.6;
-            color: #2d3436;
-            scroll-behavior: smooth;
-            background-color: #ffffff;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            display: flex;
+            min-height: 100vh;
+            overflow: hidden; /* Ngăn cuộn trang chính để tạo cảm giác app */
         }
 
-        .container {
-            max-width: 1000px;
-            margin: auto;
-            padding: 40px 20px;
-        }
-
-        /* NAVIGATION */
-        header {
-            background: #fff;
-            padding: 20px 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-
+        /* SIDEBAR NAVIGATION */
         nav {
+            width: 300px;
+            background: var(--card-bg);
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
-            max-width: 1000px;
-            margin: auto;
-            padding: 0 20px;
+            padding: 40px 20px;
+            border-right: 1px solid #334155;
+            z-index: 100;
         }
 
-        .logo {
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid var(--primary-color);
+            margin-bottom: 20px;
+            object-fit: cover;
+            background: #fff; /* Chỗ để ảnh của bạn */
+        }
+
+        .profile-info h1 {
             font-size: 1.4rem;
-            font-weight: 800;
-            color: #0984e3;
-            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 5px;
         }
 
-        nav ul {
-            display: flex;
+        .profile-info p {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .nav-links {
+            width: 100%;
             list-style: none;
         }
 
-        nav ul li a {
-            text-decoration: none;
-            color: #636e72;
-            margin-left: 25px;
-            font-weight: 600;
-            transition: 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: #0984e3;
-        }
-
-        /* HERO SECTION */
-        #hero {
-            padding-top: 150px;
-            padding-bottom: 80px;
-            text-align: center;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        }
-
-        .hero-content h1 {
-            font-size: 3rem;
+        .nav-links li {
             margin-bottom: 10px;
-            color: #2d3436;
         }
 
-        .hero-content h1 span {
-            color: #0984e3;
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            color: var(--text-gray);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: var(--transition);
+            cursor: pointer;
         }
 
-        .hero-content p {
-            font-size: 1.2rem;
-            color: #636e72;
-            margin-bottom: 30px;
+        .nav-links a i {
+            margin-right: 15px;
+            width: 20px;
         }
 
-        /* SECTION TITLES */
+        .nav-links a:hover, .nav-links a.active {
+            background: var(--primary-color);
+            color: #fff;
+        }
+
+        /* MAIN CONTENT AREA */
+        main {
+            flex: 1;
+            position: relative;
+            padding: 50px;
+            overflow-y: auto;
+        }
+
+        .page {
+            display: none; /* Ẩn tất cả các trang mặc định */
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .page.active {
+            display: block; /* Chỉ hiện trang có class active */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .section-title {
-            font-size: 2rem;
+            font-size: 2.5rem;
             margin-bottom: 30px;
-            border-left: 5px solid #0984e3;
-            padding-left: 15px;
+            color: var(--primary-color);
         }
 
-        /* INFO GRID */
-        .grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 40px;
-        }
-
-        @media (max-width: 768px) {
-            .grid { grid-template-columns: 1fr; }
-            #hero h1 { font-size: 2.2rem; }
-        }
-
-        /* CARDS */
+        /* STYLES CHO TỪNG MỤC */
         .card {
-            background: #fff;
-            padding: 25px;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .grid-skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            margin-bottom: 20px;
-            border: 1px solid #eee;
-        }
-
-        .skill-tag {
-            display: inline-block;
-            background: #e1f5fe;
-            color: #0288d1;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            margin: 5px;
-            font-weight: 600;
-        }
-
-        /* PROJECT STYLES */
-        .project-meta {
-            color: #b2bec3;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-        }
-
-        /* FOOTER & CONTACT */
-        footer {
-            background: #2d3436;
-            color: #dfe6e9;
-            padding: 60px 0;
             text-align: center;
         }
 
-        .contact-info a {
-            color: #00cec9;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
         }
 
-        .btn-cv {
-            background: #0984e3;
-            color: white;
-            padding: 10px 25px;
+        .contact-item {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background: var(--card-bg);
+            border-radius: 10px;
             text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            display: inline-block;
-            margin-top: 20px;
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+
+        .contact-item:hover {
+            transform: scale(1.05);
+            background: #2d3e50;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            margin-right: 15px;
+            color: var(--primary-color);
+        }
+
+        /* MOBILE RESPONSIVE */
+        @media (max-width: 900px) {
+            body { flex-direction: column; overflow: auto; }
+            nav { width: 100%; border-right: none; border-bottom: 1px solid #334155; }
+            main { padding: 30px 20px; }
+            .contact-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <nav>
-            <div class="logo">Tai Hoang</div>
-            <ul>
-                <li><a href="#about">Học vấn</a></li>
-                <li><a href="#skills">Kỹ năng</a></li>
-                <li><a href="#projects">Dự án</a></li>
-                <li><a href="#contact">Liên hệ</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <section id="hero">
-        <div class="hero-content">
-            <h1>Tôi là <span>Hoàng Đức Tài</span></h1>
-            <p>Sinh viên CNTT năm 3 | Machine Learning Enthusiast</p>
-            <div class="contact-quick">
-                <i class="fas fa-map-marker-alt"></i> Hà Nội [cite: 6]
-            </div>
+    <nav>
+        <img src="https://via.placeholder.com/150" alt="Hoàng Đức Tài" class="profile-img">
+        
+        <div class="profile-info">
+            <h1>Hoàng Đức Tài</h1>
+            <p>IT Student & ML Enthusiast</p>
         </div>
-    </section>
 
-    <div class="container">
-        <div class="grid">
-            <main>
-                <section id="about">
-                    <h2 class="section-title">Mục tiêu nghề nghiệp</h2>
-                    <p>Tôi là sinh viên năm thứ ba chuyên ngành Công nghệ thông tin [cite: 13] với niềm đam mê mãnh liệt đối với Học máy (Machine Learning)[cite: 9]. Tôi đang tìm kiếm cơ hội tham gia các nhóm nghiên cứu để tích lũy kinh nghiệm thực tế và đóng góp vào các dự án học thuật[cite: 10].</p>
-                </section>
+        <ul class="nav-links">
+            <li><a onclick="showPage('about')" id="link-about" class="active"><i class="fas fa-user"></i> Giới thiệu</a></li>
+            <li><a onclick="showPage('education')" id="link-education"><i class="fas fa-graduation-cap"></i> Học vấn</a></li>
+            <li><a onclick="showPage('skills')" id="link-skills"><i class="fas fa-code"></i> Kỹ năng</a></li>
+            <li><a onclick="showPage('projects')" id="link-projects"><i class="fas fa-tasks"></i> Dự án</a></li>
+            <li><a onclick="showPage('contact')" id="link-contact"><i class="fas fa-envelope"></i> Liên hệ</a></li>
+        </ul>
+    </nav>
 
-                <section id="projects" style="margin-top: 40px;">
-                    <h2 class="section-title">Dự án nổi bật</h2>
-                    <div class="card">
-                        <h3>Predict Student Graduation Outcome</h3>
-                        <p class="project-meta">Thời gian: 10/2025 – 11/2025 [cite: 27]</p>
-                        <p>Xây dựng hệ thống phân loại nhị phân dự đoán khả năng tốt nghiệp đúng hạn dựa trên các yếu tố học tập và xã hội[cite: 29].</p>
-                        <ul style="margin: 15px 0 15px 20px;">
-                            <li>Sử dụng Linear Regression để xử lý dữ liệu GPA thiếu[cite: 31].</li>
-                            <li>Huấn luyện mô hình Random Forest để đảm bảo độ chính xác[cite: 32].</li>
-                            <li>Công nghệ: Python, Pandas, Scikit-learn, Flask, Streamlit[cite: 33].</li>
-                        </ul>
+    <main>
+        <section id="about" class="page active">
+            <h2 class="section-title">Về Tôi</h2>
+            <div class="card">
+                <p style="font-size: 1.1rem; line-height: 1.8;">
+                    Tôi là sinh viên năm 3 chuyên ngành Công nghệ thông tin tại Học viện Công nghệ Bưu chính Viễn thông. 
+                    Với niềm đam mê lớn dành cho <strong>Machine Learning</strong>, tôi luôn nỗ lực tìm kiếm cơ hội tham gia các nhóm nghiên cứu 
+                    để đóng góp giá trị và nâng cao kỹ năng học thuật của mình.
+                </p>
+            </div>
+        </section>
+
+        <section id="education" class="page">
+            <h2 class="section-title">Học vấn</h2>
+            <div class="card">
+                <h3>Học viện Công nghệ Bưu chính Viễn thông (PTIT)</h3>
+                <p style="color: var(--primary-color);">Chuyên ngành Công nghệ thông tin | 2023 - Nay</p>
+                <ul style="margin-top: 15px; color: var(--text-gray); margin-left: 20px;">
+                    <li>GPA hiện tại: <strong>3.42 / 4.0</strong></li>
+                    <li>Chứng chỉ Tiếng Anh: <strong>Aptis B1</strong></li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="skills" class="page">
+            <h2 class="section-title">Kỹ năng chuyên môn</h2>
+            <div class="grid-skills">
+                <div class="skill-item">
+                    <i class="fab fa-python fa-2x" style="color: #3776ab;"></i>
+                    <p style="margin-top:10px;">Python / Java / C++</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-brain fa-2x" style="color: #ff9900;"></i>
+                    <p style="margin-top:10px;">Scikit-learn / Pandas / Numpy</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-database fa-2x" style="color: #4479a1;"></i>
+                    <p style="margin-top:10px;">Algorithms & Data Structures</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fab fa-git-alt fa-2x" style="color: #f05032;"></i>
+                    <p style="margin-top:10px;">Git / Version Control</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="page">
+            <h2 class="section-title">Dự án tiêu biểu</h2>
+            <div class="card">
+                <div style="display: flex; justify-content: space-between;">
+                    <h3>Predict Student Graduation Outcome</h3>
+                    <span style="color: var(--text-gray);">10/2025 - 11/2025</span>
+                </div>
+                <p style="margin: 15px 0; color: var(--text-gray);">Dự đoán khả năng tốt nghiệp đúng hạn của sinh viên bằng Machine Learning.</p>
+                <ul style="margin-left: 20px;">
+                    <li>Xử lý dữ liệu GPA thiếu bằng Linear Regression.</li>
+                    <li>Sử dụng mô hình Random Forest Classifier để phân loại.</li>
+                    <li>Công nghệ: Flask, Streamlit, Scikit-learn, Pandas.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="contact" class="page">
+            <h2 class="section-title">Kết nối</h2>
+            <div class="contact-grid">
+                <a href="mailto:taih02551@gmail.com" class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <p style="color: var(--text-gray); font-size: 0.8rem;">Email</p>
+                        <p>taih02551@gmail.com</p>
                     </div>
-                </section>
-            </main>
-
-            <aside>
-                <h2 class="section-title">Học vấn</h2>
-                <div class="card">
-                    <p><strong>PTIT</strong> [cite: 13]</p>
-                    <p>GPA: 3.42 / 4.0 [cite: 14]</p>
-                    <p>Chứng chỉ: Aptis B1 [cite: 36]</p>
+                </a>
+                <a href="tel:0899619237" class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <p style="color: var(--text-gray); font-size: 0.8rem;">Điện thoại</p>
+                        <p>0899619237</p>
+                    </div>
+                </a>
+                <a href="https://github.com/masterdev195" target="_blank" class="contact-item">
+                    <i class="fab fa-github"></i>
+                    <div>
+                        <p style="color: var(--text-gray); font-size: 0.8rem;">GitHub</p>
+                        <p>github.com/masterdev195</p>
+                    </div>
+                </a>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <p style="color: var(--text-gray); font-size: 0.8rem;">Địa chỉ</p>
+                        <p>Hà Nội, Việt Nam</p>
+                    </div>
                 </div>
-
-                <h2 class="section-title">Kỹ năng</h2>
-                <div class="card">
-                    <p><strong>Ngôn ngữ:</strong></p>
-                    <span class="skill-tag">Python</span> <span class="skill-tag">C/C++</span> <span class="skill-tag">Java</span> [cite: 17]
-                    
-                    <p style="margin-top:15px;"><strong>Thư viện & Công cụ:</strong></p>
-                    <span class="skill-tag">Numpy</span> <span class="skill-tag">Pandas</span> <span class="skill-tag">Scikit-learn</span> <span class="skill-tag">Git</span> [cite: 18]
-                    
-                    <p style="margin-top:15px;"><strong>Thuật toán:</strong></p>
-                    <p style="font-size: 0.9rem;">Trees, Graphs, Queues, Stacks [cite: 23]</p>
-                </div>
-            </aside>
-        </div>
-    </div>
-
-    <footer id="contact">
-        <div class="container">
-            <h2>Hãy kết nối với tôi</h2>
-            <p style="margin-bottom: 20px;">Luôn sẵn sàng cho các dự án và cơ hội nghiên cứu mới.</p>
-            <div class="contact-info">
-                <a href="mailto:taih02551@gmail.com"><i class="fas fa-envelope"></i> taih02551@gmail.com</a> [cite: 5]
-                <a href="tel:0899619237"><i class="fas fa-phone"></i> 0899619237</a> [cite: 4]
-                <a href="https://github.com/masterdev195" target="_blank"><i class="fab fa-github"></i> GitHub</a> [cite: 7]
             </div>
-            <p style="margin-top: 30px; opacity: 0.5; font-size: 0.8rem;">© 2026 Hoang Duc Tai. Designed for Portfolio.</p>
-        </div>
-    </footer>
+        </section>
+    </main>
 
+    <script>
+        function showPage(pageId) {
+            // Ẩn tất cả các trang
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+
+            // Bỏ active ở tất cả menu links
+            const links = document.querySelectorAll('.nav-links a');
+            links.forEach(link => link.classList.remove('active'));
+
+            // Hiện trang được chọn
+            document.getElementById(pageId).classList.add('active');
+
+            // Active menu link tương ứng
+            document.getElementById('link-' + pageId).classList.add('active');
+        }
+    </script>
 </body>
 </html>
