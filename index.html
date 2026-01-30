@@ -3,356 +3,323 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hoàng Đức Tài</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Hoàng Đức Tài | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --bg-body: #0b0f19;
-            --bg-sidebar: #111827;
-            --bg-card: #1f2937;
-            --accent-color: #3b82f6; /* Blue */
-            --text-main: #f3f4f6;
-            --text-dim: #9ca3af;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --bg-dark: #080a0c;
+            --bg-sidebar: #111418;
+            --bg-card: #1a1f26;
+            --accent: #007aff;
+            --text-main: #ffffff;
+            --text-dim: #a0a6af;
+            --border: #2d343d;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-body);
+            background-color: var(--bg-dark);
             color: var(--text-main);
             display: flex;
-            min-height: 100vh;
-            overflow: hidden; /* Giữ sidebar cố định, chỉ cuộn nội dung */
-        }
-
-        /* SIDEBAR */
-        aside {
-            width: 280px;
-            background-color: var(--bg-sidebar);
-            display: flex;
-            flex-direction: column;
-            padding: 40px 20px;
-            border-right: 1px solid #374151;
-            flex-shrink: 0;
-        }
-
-        .profile-section {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .avatar-placeholder {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            margin: 0 auto 15px;
-            border: 3px solid var(--accent-color);
-            background: #2563eb; /* Thay bằng ảnh của bạn: background-image: url('anh.jpg'); */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: white;
+            height: 100vh;
             overflow: hidden;
         }
 
-        .profile-section h2 {
-            font-size: 1.25rem;
-            font-weight: 700;
+        /* SIDEBAR NAVIGATION */
+        aside {
+            width: 300px;
+            background: var(--bg-sidebar);
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            padding: 40px 20px;
+            flex-shrink: 0;
         }
 
-        .profile-section p {
-            color: var(--text-dim);
-            font-size: 0.85rem;
-            margin-top: 5px;
+        .profile-box {
+            text-align: center;
+            margin-bottom: 50px;
         }
 
-        nav {
-            flex: 1;
+        .avatar {
+            width: 130px;
+            height: 130px;
+            border-radius: 24px; /* Kiểu bo góc hiện đại */
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--accent), #5856d6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            color: white;
+            box-shadow: 0 10px 30px rgba(0, 122, 255, 0.3);
+            position: relative;
+            overflow: hidden;
         }
 
-        nav ul {
-            list-style: none;
-        }
+        /* Để chèn ảnh của bạn: 
+           .avatar { background-image: url('ten_file.jpg'); background-size: cover; } 
+        */
 
-        nav ul li {
-            margin-bottom: 10px;
-        }
+        .profile-box h2 { font-size: 1.4rem; font-weight: 800; }
+        .profile-box p { color: var(--accent); font-size: 0.85rem; font-weight: 600; margin-top: 5px; text-transform: uppercase; letter-spacing: 1px; }
 
+        nav ul { list-style: none; }
+        nav ul li { margin-bottom: 8px; }
         nav ul li a {
             display: flex;
             align-items: center;
-            padding: 12px 15px;
+            padding: 14px 18px;
             color: var(--text-dim);
             text-decoration: none;
-            border-radius: 8px;
+            border-radius: 12px;
             font-weight: 600;
             transition: var(--transition);
         }
 
-        nav ul li a i {
-            margin-right: 12px;
-            width: 20px;
-            text-align: center;
-        }
-
+        nav ul li a i { margin-right: 15px; font-size: 1.1rem; width: 20px; }
         nav ul li a:hover, nav ul li a.active {
-            background-color: var(--accent-color);
-            color: white;
+            background: var(--bg-card);
+            color: var(--text-main);
         }
+        nav ul li a.active { border-left: 4px solid var(--accent); }
 
-        /* MAIN CONTENT */
+        /* MAIN CONTENT SECTION */
         main {
             flex: 1;
-            padding: 40px;
+            padding: 60px;
             overflow-y: auto;
             position: relative;
+            background-image: radial-gradient(circle at top right, rgba(0, 122, 255, 0.05), transparent);
         }
 
         .page {
-            display: none; /* Ẩn mặc định */
-            max-width: 900px;
+            display: none; /* QUAN TRỌNG: Ẩn tất cả các trang */
+            max-width: 850px;
             margin: 0 auto;
-            animation: slideUp 0.4s ease-out;
         }
 
         .page.active {
-            display: block; /* Hiện khi active */
+            display: block; /* Hiện trang có class active */
+            animation: fadeInSlide 0.6s ease;
         }
 
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes fadeInSlide {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
-        h1.page-title {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            color: var(--accent-color);
-        }
+        .page-header { margin-bottom: 40px; }
+        .page-header h1 { font-size: 3rem; font-weight: 800; margin-bottom: 10px; }
+        .page-header .line { width: 60px; height: 4px; background: var(--accent); border-radius: 2px; }
 
-        .subtitle {
-            color: var(--text-dim);
-            margin-bottom: 40px;
-        }
-
-        /* CARDS & CONTENT */
+        /* CARDS */
         .card {
-            background-color: var(--bg-card);
-            border-radius: 12px;
-            padding: 25px;
-            margin-bottom: 25px;
-            border: 1px solid #374151;
-        }
-
-        .card h3 {
-            margin-bottom: 15px;
-            color: var(--accent-color);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .card h3 span {
-            font-size: 0.9rem;
-            color: var(--text-dim);
-            font-weight: 400;
-        }
-
-        .info-list {
-            list-style: none;
-        }
-
-        .info-list li {
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-        }
-
-        .info-list li i {
-            width: 30px;
-            color: var(--accent-color);
-        }
-
-        .badge-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .badge {
-            background-color: #374151;
-            padding: 6px 14px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
             border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
+            padding: 30px;
+            margin-bottom: 24px;
+            transition: var(--transition);
         }
 
-        .project-detail {
-            color: var(--text-dim);
-            margin: 15px 0;
-            line-height: 1.6;
+        .card:hover { transform: translateY(-5px); border-color: var(--accent); }
+
+        .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
+        .card-header h3 { font-size: 1.25rem; color: var(--text-main); }
+        .card-header span { color: var(--accent); font-weight: 600; font-size: 0.9rem; }
+
+        .tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
+        .tag { background: rgba(0, 122, 255, 0.1); color: var(--accent); padding: 6px 14px; border-radius: 8px; font-size: 0.8rem; font-weight: 600; }
+
+        /* SKILLS GRID */
+        .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+        /* CONTACT LIST */
+        .contact-list { list-style: none; }
+        .contact-list li { 
+            display: flex; 
+            align-items: center; 
+            padding: 20px; 
+            background: var(--bg-card); 
+            border-radius: 16px; 
+            margin-bottom: 15px;
+            border: 1px solid var(--border);
         }
+        .contact-list i { font-size: 1.5rem; color: var(--accent); margin-right: 20px; width: 30px; text-align: center; }
 
         /* RESPONSIVE */
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
             body { flex-direction: column; overflow: auto; }
-            aside { width: 100%; border-right: none; border-bottom: 1px solid #374151; }
-            main { padding: 20px; }
+            aside { width: 100%; height: auto; border-right: none; border-bottom: 1px solid var(--border); }
+            main { padding: 30px; }
+            .skills-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
     <aside>
-        <div class="profile-section">
-            <div class="avatar-placeholder">
-                <i class="fas fa-user-tie"></i>
-            </div>
+        <div class="profile-box">
+            <div class="avatar">
+                <i class="fas fa-robot"></i> </div>
             <h2>Hoàng Đức Tài</h2>
             <p>IT Student & ML Enthusiast</p>
         </div>
 
         <nav>
-            <ul id="menu">
-                <li><a href="#about" class="active"><i class="fas fa-id-card"></i> Giới thiệu</a></li>
-                <li><a href="#education"><i class="fas fa-graduation-cap"></i> Học vấn</a></li>
-                <li><a href="#skills"><i class="fas fa-layer-group"></i> Kỹ năng</a></li>
-                <li><a href="#projects"><i class="fas fa-code-branch"></i> Dự án</a></li>
-                <li><a href="#contact"><i class="fas fa-paper-plane"></i> Liên hệ</a></li>
+            <ul id="main-menu">
+                <li><a href="#home" class="active" onclick="navigateTo('home')"><i class="fas fa-house"></i> Trang chủ</a></li>
+                <li><a href="#edu" onclick="navigateTo('edu')"><i class="fas fa-graduation-cap"></i> Học vấn</a></li>
+                <li><a href="#skills" onclick="navigateTo('skills')"><i class="fas fa-code"></i> Kỹ năng</a></li>
+                <li><a href="#projects" onclick="navigateTo('projects')"><i class="fas fa-rocket"></i> Dự án</a></li>
+                <li><a href="#contact" onclick="navigateTo('contact')"><i class="fas fa-paper-plane"></i> Liên hệ</a></li>
             </ul>
         </nav>
     </aside>
 
     <main>
-        <section id="about" class="page active">
-            <h1 class="page-title">Giới thiệu</h1>
-            <p class="subtitle">Mục tiêu nghề nghiệp & Bản thân</p>
+        <section id="home" class="page active">
+            <div class="page-header">
+                <h1>Chào bạn!</h1>
+                <div class="line"></div>
+            </div>
             <div class="card">
-                <p style="line-height: 1.8;">
-                    Chào bạn! Tôi là một sinh viên Công nghệ thông tin năm thứ 3 với niềm đam mê mãnh liệt dành cho 
-                    <strong>Học máy (Machine Learning)</strong>[cite: 9, 12]. 
-                    Tôi luôn tìm kiếm những cơ hội để gia nhập các nhóm nghiên cứu, từ đó trau dồi kinh nghiệm thực tế, 
-                    cải thiện kỹ năng học thuật và đóng góp vào các dự án ý nghĩa[cite: 10].
+                <p style="font-size: 1.2rem; line-height: 1.8; color: var(--text-dim);">
+                    Tôi là sinh viên năm thứ ba chuyên ngành <strong>Công nghệ thông tin</strong> tại Học viện Công nghệ Bưu chính Viễn thông. 
+                    Với định hướng trở thành một chuyên gia <strong>Machine Learning</strong>, tôi luôn khao khát được cống hiến vào các dự án nghiên cứu thực tế để giải quyết các vấn đề xã hội thông qua dữ liệu.
                 </p>
             </div>
         </section>
 
-        <section id="education" class="page">
-            <h1 class="page-title">Học vấn</h1>
-            <p class="subtitle">Hành trình đào tạo chuyên môn</p>
-            <div class="card">
-                <h3>Học viện Công nghệ Bưu chính Viễn thông (PTIT) <span>2023 - Hiện tại</span></h3>
-                <p><strong>Chuyên ngành:</strong> Công nghệ thông tin [cite: 13]</p>
-                <p style="margin-top: 10px;"><strong>GPA:</strong> 3.42 / 4.0 [cite: 14]</p>
+        <section id="edu" class="page">
+            <div class="page-header">
+                <h1>Học vấn</h1>
+                <div class="line"></div>
             </div>
             <div class="card">
-                <h3>Chứng chỉ quốc tế</h3>
-                <ul class="info-list">
-                    <li><i class="fas fa-certificate"></i> Aptis English Certificate - Level B1 (2024) [cite: 35, 36]</li>
-                </ul>
+                <div class="card-header">
+                    <h3>Học viện Công nghệ Bưu chính Viễn thông</h3>
+                    <span>2023 — Hiện tại</span>
+                </div>
+                <p style="color: var(--text-dim);">Chuyên ngành: Công nghệ thông tin</p>
+                <div class="tags" style="margin-top: 20px;">
+                    <div class="tag">GPA: 3.42 / 4.0</div>
+                    <div class="tag">Aptis B1 (2024)</div>
+                </div>
             </div>
         </section>
 
         <section id="skills" class="page">
-            <h1 class="page-title">Kỹ năng</h1>
-            <p class="subtitle">Nền tảng kỹ thuật & Công cụ</p>
-            <div class="card">
-                <h4 style="margin-bottom: 15px;">Ngôn ngữ lập trình [cite: 17]</h4>
-                <div class="badge-group">
-                    <span class="badge">Python</span>
-                    <span class="badge">C / C++</span>
-                    <span class="badge">Java</span>
-                </div>
+            <div class="page-header">
+                <h1>Kỹ năng</h1>
+                <div class="line"></div>
             </div>
-            <div class="card">
-                <h4 style="margin-bottom: 15px;">Thư viện & Công cụ [cite: 18]</h4>
-                <div class="badge-group">
-                    <span class="badge">Numpy</span>
-                    <span class="badge">Pandas</span>
-                    <span class="badge">Matplotlib</span>
-                    <span class="badge">Scikit-learn</span>
-                    <span class="badge">Git</span>
+            <div class="skills-grid">
+                <div class="card">
+                    <h3>Lập trình</h3>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">C/C++</span>
+                        <span class="tag">Java</span>
+                    </div>
                 </div>
-            </div>
-            <div class="card">
-                <h4 style="margin-bottom: 15px;">Thuật toán & Cấu trúc dữ liệu [cite: 21, 23]</h4>
-                <p style="color: var(--text-dim);">
-                    Nắm vững các thuật toán tìm kiếm, sắp xếp, phân loại. Có kiến thức vững chắc về Trees, Graphs, Queues, Stacks.
-                </p>
+                <div class="card">
+                    <h3>Công nghệ & Thư viện</h3>
+                    <div class="tags">
+                        <span class="tag">Numpy</span>
+                        <span class="tag">Pandas</span>
+                        <span class="tag">Scikit-learn</span>
+                        <span class="tag">Matplotlib</span>
+                        <span class="tag">Git</span>
+                    </div>
+                </div>
+                <div class="card" style="grid-column: 1 / -1;">
+                    <h3>Thuật toán & Cơ sở dữ liệu</h3>
+                    <p style="color: var(--text-dim); margin-top: 10px;">
+                        Nắm vững Algorithms (Search, Sorting, Classification) và kiến thức về Data Structures (Trees, Graphs, Queues, Stacks).
+                    </p>
+                </div>
             </div>
         </section>
 
         <section id="projects" class="page">
-            <h1 class="page-title">Dự án</h1>
-            <p class="subtitle">Sản phẩm thực tế đã thực hiện</p>
+            <div class="page-header">
+                <h1>Dự án</h1>
+                <div class="line"></div>
+            </div>
             <div class="card">
-                <h3>Predict Student Graduation Outcome <span>10/2025 - 11/2025</span></h3>
-                <p><strong>Vai trò:</strong> Developer [cite: 28]</p>
-                <p class="project-detail">
-                    Phát triển hệ thống phân loại để dự đoán sinh viên có tốt nghiệp đúng hạn hay không dựa trên các yếu tố học tập, tài chính và xã hội[cite: 29]. 
-                    Sử dụng Linear Regression để bù đắp các dữ liệu GPA bị thiếu và áp dụng Random Forest cho việc dự đoán cuối cùng[cite: 30, 31, 32].
+                <div class="card-header">
+                    <h3>Predict Student Graduation Outcome</h3>
+                    <span>10/2025</span>
+                </div>
+                <p style="color: var(--text-dim); margin-bottom: 15px;">
+                    Hệ thống dự đoán kết quả tốt nghiệp dựa trên dữ liệu học tập và xã hội. 
+                    Sử dụng Linear Regression để xử lý dữ liệu thiếu và Random Forest để phân loại.
                 </p>
-                <div class="badge-group">
-                    <span class="badge">Flask</span>
-                    <span class="badge">Streamlit</span>
-                    <span class="badge">Scikit-learn</span>
-                    <span class="badge">Joblib</span>
+                <div class="tags">
+                    <span class="tag">Flask</span>
+                    <span class="tag">Streamlit</span>
+                    <span class="tag">Scikit-learn</span>
                 </div>
             </div>
         </section>
 
         <section id="contact" class="page">
-            <h1 class="page-title">Liên hệ</h1>
-            <p class="subtitle">Hãy kết nối với tôi</p>
-            <div class="card">
-                <ul class="info-list">
-                    <li><i class="fas fa-envelope"></i> <a href="mailto:taih02551@gmail.com" style="color: inherit; text-decoration: none;">taih02551@gmail.com</a> [cite: 5]</li>
-                    <li><i class="fas fa-phone-alt"></i> 0899619237 [cite: 4]</li>
-                    <li><i class="fab fa-github"></i> <a href="https://github.com/masterdev195" target="_blank" style="color: inherit; text-decoration: none;">github.com/masterdev195</a> [cite: 7]</li>
-                    <li><i class="fas fa-map-marker-alt"></i> Hà Nội [cite: 6]</li>
-                </ul>
+            <div class="page-header">
+                <h1>Liên hệ</h1>
+                <div class="line"></div>
             </div>
+            <ul class="contact-list">
+                <li><i class="fas fa-envelope"></i> <div><strong>Email</strong><br><span style="color: var(--text-dim);">taih02551@gmail.com</span></div></li>
+                <li><i class="fas fa-phone"></i> <div><strong>Điện thoại</strong><br><span style="color: var(--text-dim);">0899619237</span></div></li>
+                <li><i class="fab fa-github"></i> <div><strong>GitHub</strong><br><span style="color: var(--text-dim);">github.com/masterdev195</span></div></li>
+                <li><i class="fas fa-location-dot"></i> <div><strong>Vị trí</strong><br><span style="color: var(--text-dim);">Hà Nội, Việt Nam</span></div></li>
+            </ul>
         </section>
     </main>
 
     <script>
-        // Hàm xử lý đổi trang dựa trên Hash URL
-        function handleRouting() {
-            const hash = window.location.hash || '#about';
-            const pageId = hash.substring(1);
-            
-            // Ẩn tất cả các trang
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.remove('active');
-            });
+        function navigateTo(pageId) {
+            // 1. Ẩn tất cả các trang bằng cách xóa class active
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
 
-            // Hiện trang được chọn
-            const activePage = document.getElementById(pageId);
-            if (activePage) {
-                activePage.classList.add('active');
+            // 2. Hiện trang được chọn
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
             }
 
-            // Cập nhật trạng thái Menu
-            document.querySelectorAll('#menu a').forEach(link => {
+            // 3. Cập nhật menu link
+            const links = document.querySelectorAll('#main-menu a');
+            links.forEach(link => {
                 link.classList.remove('active');
-                if (link.getAttribute('href') === hash) {
+                if (link.getAttribute('href') === '#' + pageId) {
                     link.classList.add('active');
                 }
             });
+            
+            // Cuộn lên đầu trang main nếu trên mobile
+            document.querySelector('main').scrollTop = 0;
         }
 
-        // Lắng nghe sự kiện đổi Hash và khi tải trang
-        window.addEventListener('hashchange', handleRouting);
-        window.addEventListener('load', handleRouting);
+        // Xử lý khi người dùng nhấn Back trên trình duyệt hoặc load lại trang
+        window.addEventListener('load', () => {
+            const hash = window.location.hash.replace('#', '');
+            if (hash) {
+                navigateTo(hash);
+            }
+        });
     </script>
 </body>
 </html>
